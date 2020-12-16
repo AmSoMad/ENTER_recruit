@@ -1,0 +1,72 @@
+							<th:block th:if="${cnt > 0}">
+							<tr th:each="list:${list}" th:id="brd_no+${list.brd_no}">
+								<td class="text-center" th:name="${list.brd_no}" th:text="${list.brd_no}">Number</td>
+								<td class="text-center" th:name="${list.nick_nm}" th:text="${list.nick_nm}">NICK</td>
+								<td class="text-center" th:name="${list.kakao_nm}" th:text="${list.kakao_nm}">KAKAO</td>
+								<td class="text-center" th:text="${list.brd_desc}">DESC</td>
+								<td class="text-center" th:text="${list.game_type}">GAME TYPE</td>
+								<td class="text-center" th:text="${list.cret_dt}">cret_dt</td>
+								<td class="text-center">
+
+										<a href="#galleryModal" class="gallery-box" data-toggle="modal" th:data-src="'../img/'+${list.brd_no}+'/'+${list.sys_file_nm_1}">
+										<img th:src="'../img/'+${list.brd_no}+'/'+${list.sys_file_nm_1}" class="img-responsive" alt="Image 1">
+										   <div class="gallery-box-caption">
+					                            <div class="gallery-box-content">
+					                                <div>
+					                                    <i class="icon-lg ion-ios-search" style="font-size: 40px;"></i>
+					                                </div>
+					                            </div>
+				                           </div>
+			                            </a>
+
+                                </td>
+                                <td class="text-center">
+									<th:block th:if="${list.sys_file_nm_2} != null">
+										<a href="#galleryModal" class="gallery-box" data-toggle="modal" th:data-src="'../img/'+${list.brd_no}+'/'+${list.sys_file_nm_2}">
+										<img th:src="'../img/'+${list.brd_no}+'/'+${list.sys_file_nm_2}" class="img-responsive" alt="Image 1">
+										   <div class="gallery-box-caption">
+					                            <div class="gallery-box-content">
+					                                <div>
+					                                    <i class="icon-lg ion-ios-search" style="font-size: 40px;"></i>
+					                                </div>
+					                            </div>
+				                           </div>
+			                            </a>
+									</th:block>
+                                </td>
+                                <td class="text-center">
+									<th:block th:if="${list.sys_file_nm_3} != null">
+										<a href="#galleryModal" class="gallery-box" data-toggle="modal" th:data-src="'../img/'+${list.brd_no}+'/'+${list.sys_file_nm_3}">
+										<img th:src="'../img/'+${list.brd_no}+'/'+${list.sys_file_nm_3}" class="img-responsive" alt="Image 1">
+										   <div class="gallery-box-caption">
+					                            <div class="gallery-box-content">
+					                                <div>
+					                                    <i class="icon-lg ion-ios-search" style="font-size: 40px;"></i>
+					                                </div>
+					                            </div>
+				                           </div>
+			                            </a>
+									</th:block>
+                                </td>
+                                <td class="text-center">
+										<button type="button" class="btn bg-dark join_delete" name="join_delete" ><i class="ion-android-delete"></i></button>
+                                </td>
+							</tr>
+							<tr>
+							   <td colspan="10" class="text-center"  th:if="${cnt > 0}">
+									<nav aria-labe="Page navigation" class="pagenate-wrap mt30">
+										<div class="page-info">
+											<div class="total">
+												Total : <span th:text="${pagination.totalRecordCount}"> </span>	Page : <span><strong th:text="${pagination.currentPageNo}" class="text-primary"></strong> / <th:block th:text="${pagination.totalPageCount}"></th:block></span>
+											</div>
+											<div class="page">
+										<ul class="pagination justify-content-center" th:utext="${#enterUtils.drawPagination(pagination,#httpServletRequest.getContextPath(),'fnSearch')}">
+										</ul>
+											</div>
+										</div>
+									</nav>
+
+								</td>
+							</tr>
+
+							</th:block>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+ 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/scrimlayout">
+
+<th:block th:insert="layout/layout :: f-header_board"> header </th:block>
+<head>
+<meta charset="UTF-8">
+<title>ENTER - 친선신청</title>
+</head>
+<body>
+
+    <section id="boardScrim">
+        <div class="container">
+            <div class="row table-responsive">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h1 class="cursive wow flipInX" >Scrimmage</h1>
+                    <hr class="primary">
+                    <p>신청 목록</p>
+                    <label></label>
+                    <hr class="primary">
+                </div>
+                <div class="col-lg-12 float-right text-right"><button class="btn btn-primary" id="scrimReg" onclick="location.href='/scrim/scrimReg'">Scrim apply</button></div>
+	                <div class="row-lg-8 row-lg-offset-1 text-center">
+	                    <form class="contact-form">
+	                    <input type="hidden" id="pageNo" name="pageNo" th:value="${#strings.isEmpty(param.pageNo) ? '1' : param.pageNo}">
+	                    <table class="container table-dark table-hover">
+							<colgroup>
+										<col width="50">
+										<col width="100">
+										<col width="80">
+										<col width="80">
+										<col width="80">
+										<col width="100">
+										<col width="100">
+										<col width="50">
+							</colgroup>
+	                    <thead>
+								<tr>
+									<th class="text-muted text-center">Number</th>
+									<th class="text-muted text-center">Club Name</th>
+									<th class="text-muted text-center">CREATOR</th>
+									<th class="text-muted text-center">GAME TYPE</th>
+									<th class="text-muted text-center">Total Round</th>
+									<th class="text-muted text-center"><i class="icon-mid ion-android-star"></i> Rider Info</th>
+									<th class="text-muted text-center">Date</th>
+									<th class="text-muted text-center">Delete</th>
+
+								</tr>
+	                    </thead>
+	                    <tbody id="listView">
+
+	                    </tbody>
+
+	                    </table>
+				    		<div class="col-lg-10 col-lg-offset-1 text-center">
+		 					<div class="ng-untouched ng-pristine ng-valid" >
+
+							</div>
+								<div class="col-md-4 col-md-offset-4">
+									<label> </label>
+									<button type="button" class="btn btn-primary btn-block btn-lg" id="listUpdate" onclick="location.href='/scrim/scrimList'">List Update <i class="ion-android-arrow-forward"></i></button>
+								</div>
+							</div>
+	                    </form>
+	                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<img src="" id="galleryImage" class="img-responsive" />
+        		<p>
+        		    <br/>
+        		    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+        		</p>
+        	</div>
+        </div>
+        </div>
+    </div>
+
+    <div id="sendModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<p class="text-center"><a href="https://open.kakao.com/o/gEjuySrc">오픈톡방</a></p>
+        		<br/>
+        		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" name="susBtn">OK <i class="ion-android-close"></i></button>
+        	</div>
+        </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3 column">
+                    <h4>Information</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Benefits</a></li>
+                        <li><a href="">Developers</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-3 column">
+                    <h4>About</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 column">
+                    <h4>Stay Posted</h4>
+                    <form>
+                        <div class="form-group">
+                          <input type="text" class="form-control" title="No spam, we promise!" placeholder="Tell us your email">
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Subscribe for updates</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-3 text-right">
+                    <h4>Follow</h4>
+                    <ul class="list-inline">
+                      <li><a rel="nofollow" href="" title="Twitter"><i class="icon-lg ion-social-twitter-outline"></i></a>&nbsp;</li>
+                      <li><a rel="nofollow" href="" title="Facebook"><i class="icon-lg ion-social-facebook-outline"></i></a>&nbsp;</li>
+                      <li><a rel="nofollow" href="" title="Dribble"><i class="icon-lg ion-social-dribbble-outline"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
+            <span class="pull-right text-muted small"><a href="http://www.bootstrapzero.com">Landing Zero by BootstrapZero</a> ©2015 Company</span>
+        </div>
+    </footer>
+
+<script>
+$( document ).ready(function() {
+	fnSearch(1);
+});
+
+
+$(function() {
+	$(document).on("click", ".scrim_delete", function(e){
+		 var scrim_no = $(this).parent().parent().children().eq(0).text();
+		 var clubNm = $(this).parent().parent().children().eq(1).text();
+		 if(confirm("Club "+clubNm+" 의 해당일정을 삭제할까요?")){
+			 console.log(scrim_no +" 인 "+ clubNm + "이놈삭제");
+			 var scrimDel = {
+				scrim_no :scrim_no,
+				club_nm : clubNm
+			 };
+			 console.log(scrimDel);
+	 		 $.ajax({
+					url:'/scrim/scrimDel',
+			        contentType : "application/json; charset=utf-8",
+					data: scrimDel,
+					success: function(result) {
+						$("#scrom_no"+scrim_no).remove();
+						console.log(result);
+						$("#sendModal").html(result);
+						$('div.sendModal').show();
+					},
+					error:function(result){
+						console.log("실패");
+						alert("삭제가 실패하였습니다.");
+					}
+			 });
+
+		 } /* confirm구간 */
+	 });
+})
+
+		  $('#galleryModal').on('show.bs.modal', function (e) {
+		    $('#galleryImage').attr("src",$(e.relatedTarget).data("src"));
+		 })
+
+
+
+
+ function fnSearch(no){
+		$("#pageNo").val(no);
+		var obj = {
+			pageNo: $("#pageNo").val()
+		};
+		$.ajax({
+			type:'post',
+	        url:"/scrim/scrimListTmp",
+	        contentType : "application/json; charset=utf-8",
+	        /* data:JSON.stringify(com.getData("#srchView")), */
+	        data:JSON.stringify(obj),
+	        success: function(result){
+		        	$("#listView").html(result);
+		        }
+		});
+	}
+
+function scrimDescView(no){
+	var obj ={
+			scrim_no : no
+	}
+	$.ajax({
+		type:'post',
+        url:"/scrim/scrimDescView",
+        contentType : "application/json; charset=utf-8",
+        /* data:JSON.stringify(com.getData("#srchView")), */
+        data:JSON.stringify(obj),
+        success: function(result){
+	        	$("#sendModal").html(result);
+	        }
+	});
+}
+
+
+</script>
+
+</body>
+
+<th:block th:insert="layout/layout :: f-footer"> footer </th:block>
+
+</html>

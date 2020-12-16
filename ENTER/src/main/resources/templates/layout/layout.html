@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="utf-8">
+    <title>ENTER</title>
+    <meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+
+
+
+<th:block th:fragment="f-header">
+	<link rel="shortcut icon" href="/resources/icon/logo.png" style="width:50%;">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/resources/css/animate.min.css" />
+    <link rel="stylesheet" href="/resources/css/ionicons.min.css" />
+    <link rel="stylesheet" href="/resources/css/styles.css" />
+    <link rel="stylesheet" href="/resources/fullcalendar/main.css" />
+	    <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+	        <div class="container-fluid">
+	            <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+	                <a class="navbar-brand page-scroll" href="#first"><i class="ion-ios-analytics-outline"></i> ENTER</a>
+	            </div>
+	            <div class="navbar-collapse collapse" id="bs-navbar">
+	                <ul class="nav navbar-nav">
+	                    <li>
+	                        <a class="page-scroll" href="#one">Intro</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="#two">Schedule Calendar</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="#three">Gallery</a>
+	                    </li>
+<!-- 	                    <li>
+	                        <a class="page-scroll" href="#four">Features</a>
+	                    </li> -->
+	                    <li>
+	                        <a class="page-scroll" href="#last">Join account</a>
+	                    </li>
+ 	             		<li>
+	                        <a class="page-scroll" href="/subscription/boardList">Subscription List</a>
+	                    </li>
+	             		<li>
+	                        <a class="page-scroll" href="/scrim/scrimList">Scrim</a>
+	                    </li>
+	                </ul>
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li>
+	                    	<a class="page-scroll" href="/">Main</a>
+	                        <!-- <a class="page-scroll" data-toggle="modal" title="anay" href="#aboutModal">About</a> -->
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	    </nav>
+</th:block>
+
+<th:block th:fragment="f-script">
+        <!--scripts loaded here -->
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/jquery.easing.min.js"></script>
+    <script src="/resources/js/wow.js"></script>
+    <script src="/resources/js/scripts.js"></script>
+</th:block>
+
+
+  </head>
+</html>

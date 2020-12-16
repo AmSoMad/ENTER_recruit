@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+		 <typeAliases>
+		 	<typeAlias alias="account" type="com.ENTER.subscription.domain.Account"/>
+		 	<typeAlias alias="BoardList" type="com.ENTER.subscription.dto.BoardList"/>
+		 	<typeAlias alias="attach" type="com.ENTER.subscription.dto.AttachFile"/>
+			<typeAlias alias="findBoard" type="com.ENTER.subscription.dto.findBoard"/>
+			<typeAlias alias="scrimAttach" type="com.ENTER.scrim.dto.scrimAttach"/>
+			<typeAlias alias="findScrim" type="com.ENTER.scrim.dto.findScrim"/>
+			<typeAlias alias="scrimForm" type="com.ENTER.scrim.domain.scrimForm"/>
+			<typeAlias alias="Findcalendar" type="com.ENTER.scrim.domain.Findcalendar"/>
+		 </typeAliases>
+
+
+
+
+</configuration>
+

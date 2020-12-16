@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ENTER.scrim.repository.ScrimMapper">
+
+<insert id="scrimReg" parameterType="scrimAttach">
+	INSERT INTO TB_SCRIM(
+	SCRIM_NO
+	,DEL_YN
+	,CLUB_NM
+	,G_TYPE
+	,M_TYPE
+	,SCRIM_DESC
+	,CRD_DT
+	,BGN_DT
+	,FILE_NM
+	,FILE_PATH
+	,SYS_FILE_NM
+	,CREATOR
+	) VALUES(
+	(select coalesce((max(scrim_no)+1),1)  as SCRIM_NO from TB_SCRIM)
+	,'N'
+	,#{club_nm}
+	,#{g_type}
+	,#{m_type}
+	,#{scrim_desc}
+	,NOW()
+	,#{bgn_dt}
+	,#{file_nm}
+	,#{file_path}
+	,#{sys_file_nm}
+	,#{creator}
+	)
+
+</insert>
+
+	<select id="scrimList" parameterType="findScrim" resultType="scrimAttach">
+		select
+		SCRIM_NO
+		,CLUB_NM
+		,G_TYPE
+		,M_TYPE
+		,SCRIM_DESC
+		,TO_CHAR(CRD_DT, 'YYYY-MM-DD HH24:MI') AS CRD_DT
+		<!-- ,TO_CHAR(BGN_DT, 'YYYY-MM-DD HH24:MI') AS BGN_DT -->
+		,BGN_DT
+		,FILE_NM
+		,SYS_FILE_NM
+		,CREATOR
+		from tb_scrim where del_yn = 'N' and scrim_no between #{startIdx} AND #{endIdx} order by scrim_no desc;
+	</select>
+
+	<select id="totalCount" resultType="Integer">
+	select count(*) from tb_scrim where del_Yn = 'N';
+	</select>
+
+	<select id="scrimDescView" parameterType="scrimForm" resultType="scrimForm">
+		select club_nm, scrim_desc from tb_scrim where scrim_no = #{scrim_no};
+
+	</select>
+
+	<select id="findCalendarList" parameterType="Findcalendar" resultType="scrimForm">
+	select club_nm, bgn_dt from tb_scrim where to_char(bgn_dt,'YYYY-MM-DD') between #{start} and #{end} and del_yn = 'N'
+	</select>
+
+	<update id="scrimForm" parameterType="scrimForm">
+		UPDATE TB_SCRIM
+		SET DEL_YN = 'Y' , CHG_DT = NOW() WHERE SCRIM_NO = #{scrim_no} AND CLUB_NM = #{club_nm}
+	</update>
+</mapper>

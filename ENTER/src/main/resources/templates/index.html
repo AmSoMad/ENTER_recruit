@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+ 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/layout">
+
+<th:block th:insert="layout/layout :: f-header"> header </th:block>
+  <body th:name="indexBody">
+    <header id="first">
+         <div class="header-content">
+            <div class="inner">
+                <h1 class="cursive wow flipInX" >ENTER, Speed & Item</h1>
+                <h4 class="cursive wow flipInX">Club Apply and Scrim</h4>
+                <hr>
+                <a href="#video-background" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">Club Apply</a> &nbsp; <a href="#one" class="btn btn-primary btn-xl page-scroll">Scrim Apply</a>
+            </div>
+        </div>
+<!--          <video playsinline autoplay muted="muted" loop class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="/resources/assets/Traffic-blurred2.jpg" id="video-background">
+            <source src="/resources/assets/Traffic-blurred2.mp4" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video> -->
+<!-- <iframe id="video-background" class="fillWidth fadeIn wow collapse in" muted src="https://www.youtube.com/embed/live_stream?channel=UCTl2piKm6GSzHeYKr-SAopw&autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/embed/live_stream?channel=UCTl2piKm6GSzHeYKr-SAopw&autoplay=1&mute=1
+-->
+
+    </header>
+    <section class="bg-primary" id="one">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                    <img alt="" src="/resources/icon/logo.png" style="width: 30%; height: 30%;"><br><br><h2 class="margin-top-0">ENTER</h2>
+                    <br>
+                     <p class="text-faded">
+
+					</p>
+
+					<pre class="text-faded">
+▶▶▶스피드유저◀◀◀
+
+■테스트 응시 자격 요건■
+(타임어택 데이터 스크린샷 첨부해주세요)
+=======필수=======
+1. 고가 1분 44초 99 이하
+2. 노익 1분 57초 99 이하
+=======선택=======2개
+1. 로비 2분 01초 99 이하
+2. 해변 1분 57초 99 이하
+3. 대저택 2분 06초 99 이하
+4. 두바이 1분 50초 99 이하
+
+■테스트 합격기준■
+- 테스터와 1:1 매치 5판 3선 승리
+(고가 맵골 이후 승자 맵골형식으로 진행, 캐릭 앰블럼 자유)
+
+
+
+▶▶▶아이템유저◀◀◀
+
+■테스트 응시 자격 요건■
+1. 시즌 최고 승률 55% 이상, 최소 판수 300판 이상
+(스크린샷 첨부해서 문의방에 올려주세요)
+2. 템유저라할 수있는 차조합 보유
+(풀장착 스크린샷 첨부해주세요)
+*유니콘, 저티, 이글루, 선녀 우대
+3. 아이템 맵 주행
+(레어카트로 진행 / 출부, 순부, 터부로만 주행 해주세요.)
+: 아래 3개 맵 중 2개 선택, 각 맵당 기회 3번.
+  - 빌리지 손가락 : 1:42.99
+  - 차이나 서안 병마용 : 2:11.99
+  - 사막 피라미드 탐험 : 1:49.99
+
+■테스트 합격기준■
+- 아이템 테스터인 그림자님과 랭킹전 3회 진행 후 결정
+ (아이템전은 오후7시 이후 테스트 가능)
+
+
+
+* 테스트의 기회는 1번입니다.(재텟없음)
+
+*무엇보다 중요한건 기본매너와 예의입니다.
+기본조차 안된 분들에게 저희의 소중한 시간
+낭비하지 않겠습니다. 읽어주시고 문의해주셔서 감사합니다.
+					</pre>
+                    <a href="#three" class="btn btn-default btn-xl page-scroll">Learn More</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="two">
+    	<div class="container">
+    		<div class="row">
+    		<form action="">
+    		<div id="calendar">
+
+    		</div>
+    		</form>
+    		</div>
+    	</div>
+    </section>
+    <section id="three" class="no-padding">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+<!--                 <div class="col-lg-4 col-sm-6">
+                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="/resources/assets/deer.jpg">
+                        <img src="/resources/assets/deer.jpg" class="img-responsive" alt="Image 1">
+		        <video autoplay muted="muted" loop class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="/resources/assets/Traffic-blurred2.jpg" id="video-background"   style="max-width: 100%; height: auto;">
+		            <source src="/resources/assets/intro2.mp4" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your browser.
+		        </video>
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div> -->
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#galleryVideoModal" class="gallery-box" data-toggle="modal" data-src="/resources/assets/intro2.mp4">
+				        <video playsinline autoplay muted="muted" loop class="video-responsive" data-wow-delay="0.5s" poster="/resources/icon/logo.png" id="video-gallery"   style="width: 634px; height: 416px;">
+				            <source src="/resources/assets/intro2.mp4" type="video/mp4" class="img-responsive">
+				        </video>
+
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#YoutubeModal" class="gallery-box" data-toggle="modal" data-src="https://www.youtube.com/embed/B6muKDd7m2Q">
+		        <iframe playsinline class="video-gallery" src="https://www.youtube.com/embed/B6muKDd7m2Q" frameborder="0" allow="muted accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#galleryVideoModal" class="gallery-box" data-toggle="modal" data-src="/resources/assets/intro1.mp4">
+				        <video playsinline autoplay muted="muted" loop class="video-responsive" data-wow-delay="0.5s" poster="/resources/icon/logo.png" id="video-gallery"   style="width: 634px; height: 416px;">
+				            <source src="/resources/assets/intro1.mp4" type="video/mp4" class="">
+				        </video>
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#YoutubeModal" class="gallery-box" data-toggle="modal" data-src="https://www.youtube.com/embed/cwqjDSoqRso">
+		        <iframe playsinline class="video-gallery" src="https://www.youtube.com/embed/cwqjDSoqRso" frameborder="0" allow="muted accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+				<div class="clearfix hidden-lg"> </div>
+                <div class="col-lg-4 col-sm-6">
+<!--                     <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="/resources/assets/city.jpg">
+                        <img src="/resources/assets/city.jpg" class="img-responsive" alt="Image 5">
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a> -->
+                    <a href="#YoutubeModal" class="gallery-box" data-toggle="modal" data-src="https://www.youtube.com/embed/live_stream?channel=UCTl2piKm6GSzHeYKr-SAopw&autoplay=1&mute=1">
+	        	<iframe playsinline class="video-gallery" src="https://www.youtube.com/embed/live_stream?channel=UCTl2piKm6GSzHeYKr-SAopw&autoplay=1&mute=1" frameborder="0" allow="muted accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+<!--                     <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="/resources/assets/colors.jpg">
+                        <img src="/resources/assets/colors.jpg" class="img-responsive" alt="Image 6">
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a> -->
+                    <a href="#YoutubeModal" class="gallery-box" data-toggle="modal" data-src="https://player.twitch.tv/edmswhd">
+	        	<!-- <iframe playsinline class="video-gallery" src="https://www.youtube.com/embed/live_stream?channel=UCTl2piKm6GSzHeYKr-SAopw&autoplay=1&mute=1" frameborder="0" allow="muted accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+	        	<iframe src="https://player.twitch.tv/edmswhd" frameborder="0" height="100%" width="100%" allowfullscreen> </iframe>
+                        <div class="gallery-box-caption">
+                            <div class="gallery-box-content">
+                                <div>
+                                    <i class="icon-lg ion-ios-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!--    <section class="container-fluid" id="four">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <h2 class="text-center text-primary">Features</h2>
+                <hr>
+                <div class="media wow fadeInRight">
+                    <h3>Simple</h3>
+                    <div class="media-body media-middle">
+                        <p>What could be easier? Get started fast with this landing page starter theme.</p>
+                    </div>
+                    <div class="media-right">
+                        <i class="icon-lg ion-ios-bolt-outline"></i>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeIn">
+                    <h3>Free</h3>
+                    <div class="media-left">
+                        <a href="#alertModal" data-toggle="modal" data-target="#alertModal"><i class="icon-lg ion-ios-cloud-download-outline"></i></a>
+                    </div>
+                    <div class="media-body media-middle">
+                        <p>Yes, please. Grab it for yourself, and make something awesome with this.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeInRight">
+                    <h3>Unique</h3>
+                    <div class="media-body media-middle">
+                        <p>Because you don't want your Bootstrap site, to look like a Bootstrap site.</p>
+                    </div>
+                    <div class="media-right">
+                        <i class="icon-lg ion-ios-snowy"></i>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeIn">
+                    <h3>Popular</h3>
+                    <div class="media-left">
+                        <i class="icon-lg ion-ios-heart-outline"></i>
+                    </div>
+                    <div class="media-body media-middle">
+                        <p>There's good reason why Bootstrap is the most used frontend framework in the world.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="media wow fadeInRight">
+                    <h3>Tested</h3>
+                    <div class="media-body media-middle">
+                        <p>Bootstrap is matured and well-tested. It's a stable codebase that provides consistency.</p>
+                    </div>
+                    <div class="media-right">
+                        <i class="icon-lg ion-ios-flask-outline"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2 class="text-primary">Get Started</h2>
+                <a href="http://www.bootstrapzero.com/bootstrap-template/landing-zero" target="ext" class="btn btn-default btn-lg wow flipInX">Free Download</a>
+            </div>
+            <br>
+            <hr/>
+            <br>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="row">
+                        <h6 class="wide-space text-center">BOOTSTRAP IS BASED ON THESE STANDARDS</h6>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-html5-outline" title="html 5"></i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-sass" title="sass"></i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-javascript-outline" title="javascript"></i>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 text-center">
+                            <i class="icon-lg ion-social-css3-outline" title="css 3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside> -->
+    <section id="last">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="margin-top-0 wow fadeIn">Join account</h2>
+                    <hr class="primary">
+                    <p>Would you like to sign up?</p>
+                    <label>클럽에 가입하실 사용자의 정보를 입력해주세요.</label>
+                </div>
+
+	                <div class="col-lg-10 col-lg-offset-1 text-center">
+	                    <form class="contact-form row" action="/board/boardReg" name="FormAccount">
+	                        <div class="col-md-4">
+	                            <label><i class="icon-mid ion-android-star"></i> KartRider</label>
+	                            <input type="text" class="form-control" placeholder="Nick Name" name="nick_name" maxlength="12">
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label><i class="icon-mid ion-android-star"></i> account address</label>
+	                            <input type="text" class="form-control" placeholder="kakao Name" name="kakao_name" maxlength="10">
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label><i class="icon-mid ion-android-star"></i> Game Type - Speed & Item Select</label>
+	                            <!-- <label></label> -->
+	                            <select type="text" class="form-control" style="color: #999" name="game_type">
+	                            <!-- <option value="Game Type - Speed & Item Select"></option> -->
+	                            	<optgroup label="Speed">
+	                            	<option value="speed">Speed</option>
+	                            	</optgroup>
+	                            	<optgroup label="Item">
+	                            	<option value="Item">Item</option>
+	                            	</optgroup>
+			                     	<optgroup label="Arcade">
+	                            	<option value="Arcade">Arcade</option>
+	                            	</optgroup>
+	                            </select>
+	                        </div>
+                   		<div class="col-lg-8 col-lg-offset-2 text-center">
+	                         <hr class="primary">
+	                    </div>
+		                        <div class="col-md-4">
+		                            <label class="form-control text-left"><i class="ion-android-star"></i> Message </label>
+		                        </div>
+		                        <div class="col-md-8">
+	                            <!-- <label></label> -->
+	                            <select type="text" class="form-control" name="game_type">
+	                            <!-- <option value="Game Type - Speed & Item Select"></option> -->
+	                            	<option value="" >선택하세요</option>
+	                            	<option value="">잘 부탁 드립니다.</option>
+	                            	<option value="">즐길 준비 됬습니다.</option>
+	                            	<option value="">못하지만 잘 부탁드립니다.</option>
+	                            </select>
+		                        </div>
+		                        <label></label>
+		                        <div class="col-md-12">
+		                            <textarea class="form-control" rows="9" placeholder="Your message here.." name="brd_desc" maxlength="300"></textarea>
+		                        </div>
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+	                         <hr class="primary">
+	                    </div>
+							<div id="input_file_List">
+								<input type="file" class="form-control hidden" multiple="multiple" placeholder="Your Info" id="input_file"/>
+		                        <div class="col-md-4">
+		                            <label><i class="icon-mid ion-android-star"></i> Rider Info</label>
+		                            <input type="text" class="form-control" placeholder="Rider Info Screen shot" name="rider_info" id="input_file0">
+
+		                        </div>
+		                        <div class="col-md-4">
+		                            <label><!-- <i class="ion-android-star-outline"></i> --> ScreenShot 1</label>
+		                            <input type="text" class="form-control" placeholder="Time Attack Screen shot 1" name="screen_shot1" id="input_file1">
+		                        </div>
+		                        <div class="col-md-4">
+		                            <label><!-- <i class="ion-android-star-outline"></i> --> ScreenShot 2</label>
+		                            <input type="text" class="form-control" placeholder="Time Attack Screen shot 2" name="screen_shot2" id="input_file2">
+		                        </div>
+
+	                        </div>
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+	                         <hr class="primary">
+	                    </div>
+		                        <div class="col-md-4 col-md-offset-4">
+		                            <label th:for="input_file" class="btn btn-primary btn-block btn-lg">Screen Shot Upload</label>
+		                            <!-- <input type="file" class="form-control hidden" multiple="multiple" placeholder="Your Info" id="input_file" accept="image/*" capture="environment"> -->
+		                            <button type="button" data-toggle="modal" data-target="#sendModal" onclick="uploadFile(); return false;" class="btn btn-primary btn-block btn-lg" id="sendAccount">Send <i class="ion-android-arrow-forward"></i></button>
+		                        </div>
+
+	                    </form>
+	                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3 column">
+                    <h4>Information</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Benefits</a></li>
+                        <li><a href="">Developers</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-3 column">
+                    <h4>About</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 column">
+                    <h4>Stay Posted</h4>
+                    <form>
+                        <div class="form-group">
+                          <input type="text" class="form-control" title="No spam, we promise!" placeholder="Tell us your email">
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Subscribe for updates</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-3 text-right">
+                    <h4>Follow</h4>
+                    <ul class="list-inline">
+                      <li><a rel="nofollow" href="" title="Twitter"><i class="icon-lg ion-social-twitter-outline"></i></a>&nbsp;</li>
+                      <li><a rel="nofollow" href="" title="Facebook"><i class="icon-lg ion-social-facebook-outline"></i></a>&nbsp;</li>
+                      <li><a rel="nofollow" href="" title="Dribble"><i class="icon-lg ion-social-dribbble-outline"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
+            <span class="pull-right text-muted small"><a href="http://www.bootstrapzero.com">Landing Zero by BootstrapZero</a> ©2015 Company</span>
+        </div>
+    </footer>
+    <div id="galleryVideoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        	<div class="modal-body">
+     			<video controls autoplay muted="muted" class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="" id="video-gallery"  style="max-width: 100%; height: auto;">
+		            <source src="" type="video/mp4" id="galleryVideoImage" class="img-responsive">Your browser does not support the video tag. I suggest you upgrade your browser.
+		        </video>
+        		<p>
+        		    <br/>
+        		    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+        		</p>
+        	</div>
+        </div>
+        </div>
+    </div>
+    <div id="YoutubeModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        	<div class="modal-body">
+<!--     			<video controls autoplay muted="muted" class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="" id="video-gallery"  style="max-width: 100%; height: auto;">
+		            <source src="" type="video/mp4" id="galleryVideoImage" class="img-responsive">Your browser does not support the video tag. I suggest you upgrade your browser.
+		        </video> -->
+		        <iframe id="srciframe" class="video-gallery-modal" src="https://www.youtube.com/embed/cfBz6HnrwI4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        		<p>
+        		    <br/>
+        		    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+        		</p>
+        	</div>
+        </div>
+        </div>
+    </div>
+    <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<img src="" id="galleryImage" class="img-responsive" />
+        		<p>
+        		    <br/>
+        		    <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+        		</p>
+        	</div>
+        </div>
+        </div>
+    </div>
+    <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<h2 class="text-center">Landing Zero Theme</h2>
+        		<h5 class="text-center">
+        		    A free, responsive landing page theme built by BootstrapZero.
+        		</h5>
+        		<p class="text-justify">
+        		    This is a single-page Bootstrap template with a sleek dark/grey color scheme, accent color and smooth scrolling.
+        		    There are vertical content sections with subtle animations that are activated when scrolled into view using the jQuery WOW plugin. There is also a gallery with modals
+        		    that work nicely to showcase your work portfolio. Other features include a contact form, email subscribe form, multi-column footer. Uses Questrial Google Font and Ionicons.
+        		</p>
+        		<p class="text-center"><a href="http://www.bootstrapzero.com">Download at BootstrapZero</a></p>
+        		<br/>
+        		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true"> OK </button>
+        	</div>
+        </div>
+        </div>
+    </div>
+    <div id="alertModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<h2 class="text-center">Nice Job!</h2>
+        		<p class="text-center">You clicked the button, but it doesn't actually go anywhere because this is only a demo.</p>
+        		<p class="text-center"><a href="http://www.bootstrapzero.com">Learn more at BootstrapZero</a></p>
+        		<br/>
+        		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">OK <i class="ion-android-close"></i></button>
+        	</div>
+        </div>
+        </div>
+    </div>
+    <div id="sendModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<p class="text-center"><a href="https://open.kakao.com/o/gEjuySrc">오픈톡방</a></p>
+        		<br/>
+        		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">OK <i class="ion-android-close"></i></button>
+        	</div>
+        </div>
+        </div>
+    </div>
+     <div id="viewModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+        	<div class="modal-body">
+        		<h2 class="text-center">Nice Job!</h2>
+        		<p class="text-center">You clicked the button, but it doesn't actually go anywhere because this is only a demo.</p>
+        		<p class="text-center"><a href="http://www.bootstrapzero.com">Learn more at BootstrapZero</a></p>
+        		<br/>
+        		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">OK <i class="ion-android-close"></i></button>
+        	</div>
+        </div>
+        </div>
+    </div>
+
+     <script>
+
+
+
+     //파일 리스트 번호
+     var fileIndex = 0;
+     //파일 최대 갯수
+     var fileLimitCnt = 3;
+     //등록할 전체 파일 사이즈
+     var totalFileSize = 0;
+     //파일 리스트
+     var fileList = new Array();
+ 	 //파일 사이즈 리스트
+     var fileSizeList = new Array();
+     //등록 가능한 파일 사이즈 MB
+     var uploadSize = 3;
+     //등록 가능한 총 파일 사이즈 MB
+     var maxUploadSize = 10;
+
+
+   //단일 파일선택
+     $("#input_file").bind('change', function() {
+     	selectFile(this.files);
+     	//this.files[0].size gets the size of your file.
+     	//alert(this.files[0].size);
+     });
+   //파일 선택시
+     function selectFile(files){
+			if(fileIndex < fileLimitCnt){
+		      // 다중파일 등록
+		      if(files != null){
+		          for(var i = 0; i < files.length; i++){
+		              // 파일 이름
+		              var fileName = files[i].name;
+		              var fileNameArr = fileName.split("\.");
+		              // 확장자
+		              var ext = fileNameArr[fileNameArr.length - 1];
+		              // 파일 사이즈(단위 :MB)
+		              var fileSize_ = files[i].size / 1024 / 1024
+		              var fileSize = fileSize_.toFixed(5);
+		              if($.inArray(ext, ['exe', 'bat', 'sh', 'java', 'jsp', 'html', 'js', 'css', 'xml', 'mp3', 'mp4', 'zip']) >= 0){
+		                  // 확장자 체크
+		                  alert("등록 불가 확장자");
+		                  break;
+		              }else if(fileSize > uploadSize){
+		                  // 파일 사이즈 체크
+						  // alert("용량 초과\n업로드 가능 용량 : " + uploadSize + " MB");
+		                  break;
+		              }else{
+		                  // 전체 파일 사이즈
+		                  totalFileSize += fileSize;
+		                  // 파일 배열에 넣기
+		                  fileList[fileIndex] = files[i];
+		                  // 파일 사이즈 배열에 넣기
+		                  fileSizeList[fileIndex] = fileSize;
+		                  // 업로드 파일 목록 생성
+		                  addFileList(fileIndex, fileName, fileSize);
+		                  // 파일 번호 증가
+		                  fileIndex++;
+		              }
+		          }
+
+		      	$("#input-file").prop("files",files);
+		      }else{
+		          alert("ERROR");
+		      }
+		}else {
+			alert("업로드 파일갯수가 초과되었습니다.");
+
+		}
+     }
+
+   //업로드 파일 목록 생성
+     function addFileList(fIndex, fileName, fileSize){
+      $('#input_file'+fIndex).val(fileName);
+     }
+
+   //업로드 파일 삭제
+     function deleteFile(fIndex){
+      // 전체 파일 사이즈 수정
+      totalFileSize -= fileSizeList[fIndex];
+      // 파일 배열에서 삭제
+      delete fileList[fIndex];
+      // 파일 사이즈 배열 삭제
+      delete fileSizeList[fIndex];
+      // 업로드 파일 테이블 목록에서 삭제
+      $("#fileDiv_" + fIndex).remove();
+     }
+
+   //파일 등록
+     function uploadFile(){
+		 if($("input[name=nick_name]").val().length==0){ alert("닉네임을 입력하세요.");$("input[name=nick_name]").focus(); return false;}
+		 if($("input[name=kakao_name]").val().length==0){ alert("카카오톡 닉네임을 입력하세요.");$("input[name=kakao_name]").focus(); return false;}
+		 if($("textarea[name=brd_desc]").val().length==0){ alert("가입 사유를 입력하세요.");$("input[name=brd_desc]").focus(); return false;}
+		 if($("input[name=rider_info]").val().length==0){ alert("라이더 정보를 첨부해주세요.");$("input[name=rider_info]").focus(); return false;}
+      // 등록할 파일 리스트
+      var uploadFileList = Object.keys(fileList);
+
+      // 파일이 있는지 체크
+      if(uploadFileList.length == 0){
+          // 파일등록 경고창
+          alert("파일이 없습니다.");
+          return;
+      }
+
+      // 용량을 500MB를 넘을 경우 업로드 불가
+      if(totalFileSize > maxUploadSize){
+          // 파일 사이즈 초과 경고창
+          alert("총 용량 초과\n총 업로드 가능 용량 : " + maxUploadSize + " MB");
+          return;
+      }
+
+      if(confirm("등록 하시겠습니까?")){
+          // 등록할 파일 리스트를 formData로 데이터 입력
+          console.log(fileList);
+          var formData = new FormData();
+          for(var i = 0; i < uploadFileList.length; i++){
+              formData.append('files', fileList[uploadFileList[i]]);
+          }
+			var nickname = $("input[name=nick_name]").val();
+			var kakaoname = $("input[name=kakao_name]").val();
+			var	gametype = $("select[name=game_type]").val();
+			var	brddesc = $("textarea[name=brd_desc]").val();
+          formData.append('nickname',nickname);
+          formData.append('kakaoname',kakaoname);
+          formData.append('gametype',gametype);
+          formData.append('brddesc',brddesc);
+
+          $.ajax({
+              url:'/subscription/boardReg',
+              data:formData,
+              type:'POST',
+              enctype:'multipart/form-data; charset=utf-8"',
+              processData:false,
+              contentType:false,
+              cache:false,
+              success:function(result){
+				 	$("input[name=nick_name]").val(""),
+					$("input[name=kakao_name]").val(""),
+					$("select[name=game_type]").val(""),
+					$("textarea[name=brd_desc]").val(""),
+					$("input[name=rider_info]").val(""),
+					$("input[name=screen_shot1]").val(""),
+					$("input[name=screen_shot2]").val(""),
+					fileList = new Array();
+				 	fileIndex = 0;
+					$("#sendModal").html(result);
+					$('div.sendModal').show();
+              },
+     		 error: function(request,status,error){
+         	 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error.toString());
+
+				alert("접수가 실패하였습니다.");
+         	 }
+          });
+      }
+   }
+	var event_result =[];
+     document.addEventListener('DOMContentLoaded', function() {
+         var calendarEl = document.getElementById('calendar');
+		var calendar = new FullCalendar.Calendar(calendarEl,{
+			googleCalendarApiKey:'AIzaSyD_2Up4Vge_fLqgt4DPgJMbtZcWYn3Y9jg',
+			dayMaxEventRows:true,
+			locale:'ko',
+			headerToolbar:{
+				center:'title',
+				left:'addEventButton',
+				right:'today prev next'
+
+			},
+			customButtons:{
+				addEventButton:{
+					text:'Add Event',
+					click:function(){
+						if(confirm("신규 일정을 추가하시겠습니까?")){
+							$(function() {
+								alert("눌르지마라 히루야~");
+							})
+
+						}else{
+
+						}
+					}
+				}
+			},
+			views:{
+				timeGrid:{
+					dayMaxEventRows:6
+				}
+			},
+			eventSources:[{
+						googleCalendarId:'',
+						className:'ENTER',
+						color:'#be5683'
+		    },
+		    {
+			        	googleCalendarId:'',
+			        	className:'대한민국 휴일',
+			        	color:'#be5683'
+		    },
+		    {
+				url:'/calendar/scrim'
+		     }],
+				events:[{
+		        	title:'친선',
+		        	start:'2020-12-12T18:00:00',
+		        	color:'#be5683'
+				},{title:'됬으면',
+					start:'2020-12-21'
+				}
+				]
+			});
+	    calendar.render();
+	  });
+
+ </script>
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/jquery.easing.min.js"></script>
+    <script src="/resources/js/wow.js"></script>
+    <script src="/resources/js/scripts.js"></script>
+    <script src="/resources/fullcalendar/main.js"></script>
+<!-- <th:block th:insert="layout/layout :: f-script"> f-script </th:block> -->
+  </body>
+
+
+</html>

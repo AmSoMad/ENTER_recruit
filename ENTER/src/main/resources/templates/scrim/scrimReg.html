@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+ 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/scrimlayout">
+
+<th:block th:insert="layout/layout :: f-header_board"> header </th:block>
+<head>
+<meta charset="UTF-8">
+<title>ENTER - 친선등록</title>
+</head>
+<body>
+    <section id="scrim">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h1 class="cursive wow flipInX" >Scrimmage Game</h1>
+                    <hr class="primary">
+                    <p>Scrimmage Game</p>
+                    <label>친선 신청서</label>
+                </div>
+
+	                <div class="col-lg-10 col-lg-offset-1 text-center">
+	                    <form class="contact-form row" action="/scrim/scrimRegForm" name="scrimForm" id="scrimForm" method="post" enctype="multipart/form-data">
+	                        <div class="col-md-4">
+	                            <label><i class="icon-mid ion-android-star"></i> Club Name</label>
+	                            <input type="text" class="form-control" placeholder="Nick Name" name="club_nm" maxlength="12">
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label><i class="icon-mid ion-android-star"></i> Creator</label>
+	                            <input type="text" class="form-control" placeholder="Creator Name" name="creator" maxlength="12">
+	                        </div>
+	                        <div class="col-md-4">
+	                            <label><i class="icon-mid ion-android-star"></i> Game Type - Speed & Item Select</label>
+	                            <select type="text" class="form-control" style="color: #999" name="g_type">
+	                            	<option value="Ss">Speed Single</option>
+	                            	<option value="St">Speed Team</option>
+	                            	<option value="Item">Item Team</option>
+	                            	<option value="Arcade">Arcade Running</option>
+	                            </select>
+	                        </div>
+                   		<div class="col-lg-8 col-lg-offset-2 text-center">
+	                         <hr class="primary">
+	                    </div>
+
+		                        <label></label>
+		                        <div class="col-md-12">
+		                            <textarea class="form-control" rows="9" placeholder="Your message here.." name="scrim_desc" maxlength="300"></textarea>
+		                        </div>
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+	                         <hr class="primary">
+	                    </div>
+	                        	<div class="col-md-4">
+	                        		<label><i class="icon-mid ion-android-star"></i> Match Type</label>
+		                        <select type="text" class="form-control" style="color: #999" name="m_type">
+	                            	<option value="cat1">13전 7선승</option>
+	                            	<option value="cat2">9전 5선승</option>
+	                            	<option value="cat3">5전 3선승</option>
+	                            	<option value="cat4">데스매치 3연승</option>
+	                            </select>
+		                        </div>
+							<div id="form-date">
+		                        <div class="col-md-4">
+		                            <label>Matching Date</label>
+		                            <input type="text" id="datepick" class="form-control" name="bgn_dt">
+		                        </div>
+	                        </div>
+							<div id="input_file_List">
+								<input type="file" class="form-control hidden" placeholder="Your Info" id="input_file" name="files"/>
+		                        <div class="col-md-4">
+		                            <label><i class="icon-mid ion-android-star"></i> Rider Info</label>
+		                            <input type="text" class="form-control" placeholder="Rider Info Screen shot" name="rider_info" id="input_file0">
+		                        </div>
+	                        </div>
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+	                         <hr class="primary">
+	                    </div>
+		                        <div class="col-md-4 col-md-offset-4">
+		                            <label th:for="input_file" class="btn btn-primary btn-block btn-lg">Screen Shot Upload</label>
+		                            <br>
+		                            <button type="button" data-toggle="modal" data-target="#sendModal" class="btn btn-primary btn-block btn-lg" id="sendAccount">Send <i class="ion-android-arrow-forward"></i></button>
+		                            <br>
+		                            <button type="button" onclick="location.href='/scrim/scrimList'" class="btn btn-primary btn-block btn-lg" >Cancel <i class="ion-android-arrow-forward"></i></button>
+		                        </div>
+
+	                    </form>
+	                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+<th:block layout:fragment="customScript">
+<script th:inline="javascript">
+
+	$("#sendAccount").on('click', function () {
+		 if($("input[name=club_nm]").val().length==0){ alert("클럽명을 입력하세요.");$("input[name=club_nm]").focus(); return false;}
+		 if($("input[name=creator]").val().length==0){ alert("신청자 닉네임을 입력하세요.");$("input[name=creator]").focus(); return false;}
+		 if($("textarea[name=scrim_desc]").val().length==0){ alert("인원 명단과 요청사항을 입력해주세요.");$("input[name=scrim_desc]").focus(); return false;}
+		 if($("input[name=rider_info]").val().length==0){ alert("라이더 정보를 첨부해주세요.");$("input[name=rider_info]").focus(); return false;}
+		$('#scrimForm').submit();
+
+	});
+
+    //파일 리스트 번호
+    var fileIndex = 0;
+    //파일 최대 갯수
+    var fileLimitCnt = 1;
+    //등록할 전체 파일 사이즈
+    var totalFileSize = 0;
+    //파일 리스트
+    var fileList = new Array();
+	 //파일 사이즈 리스트
+    var fileSizeList = new Array();
+    //등록 가능한 파일 사이즈 MB
+    var uploadSize = 3;
+    //등록 가능한 총 파일 사이즈 MB
+    var maxUploadSize = 10;
+
+
+  //단일 파일선택
+    $("#input_file").bind('change', function() {
+    	selectFile(this.files);
+    	//this.files[0].size gets the size of your file.
+    	//alert(this.files[0].size);
+    });
+  //파일 선택시
+    function selectFile(files){
+			if(fileIndex < fileLimitCnt){
+		      // 다중파일 등록
+		      if(files != null){
+		          for(var i = 0; i < files.length; i++){
+		              // 파일 이름
+		              var fileName = files[i].name;
+		              var fileNameArr = fileName.split("\.");
+		              // 확장자
+		              var ext = fileNameArr[fileNameArr.length - 1];
+		              // 파일 사이즈(단위 :MB)
+		              var fileSize_ = files[i].size / 1024 / 1024
+		              var fileSize = fileSize_.toFixed(5);
+		              if($.inArray(ext, ['exe', 'bat', 'sh', 'java', 'jsp', 'html', 'js', 'css', 'xml', 'mp3', 'mp4', 'zip']) >= 0){
+		                  // 확장자 체크
+		                  alert("등록 불가 확장자");
+		                  break;
+		              }else if(fileSize > uploadSize){
+		                  // 파일 사이즈 체크
+						  // alert("용량 초과\n업로드 가능 용량 : " + uploadSize + " MB");
+		                  break;
+		              }else{
+		                  // 전체 파일 사이즈
+		                  totalFileSize += fileSize;
+		                  // 파일 배열에 넣기
+		                  fileList[fileIndex] = files[i];
+		                  // 파일 사이즈 배열에 넣기
+		                  fileSizeList[fileIndex] = fileSize;
+		                  // 업로드 파일 목록 생성
+		                  addFileList(fileIndex, fileName, fileSize);
+		                  // 파일 번호 증가
+		                  fileIndex++;
+		              }
+		          }
+
+		      	$("#input-file").prop("files",files);
+		      }else{
+		          alert("ERROR");
+		      }
+		}else {
+			alert("업로드 파일갯수가 초과되었습니다.");
+
+		}
+    }
+
+  //업로드 파일 목록 생성
+    function addFileList(fIndex, fileName, fileSize){
+     $('#input_file'+fIndex).val(fileName);
+    }
+
+  //업로드 파일 삭제
+    function deleteFile(fIndex){
+     // 전체 파일 사이즈 수정
+     totalFileSize -= fileSizeList[fIndex];
+     // 파일 배열에서 삭제
+     delete fileList[fIndex];
+     // 파일 사이즈 배열 삭제
+     delete fileSizeList[fIndex];
+     // 업로드 파일 테이블 목록에서 삭제
+     $("#fileDiv_" + fIndex).remove();
+    }
+
+  //datepicker
+      // 시작일 dateRangePicker
+    $('#datepick').daterangepicker({
+        "singleDatePicker": true,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "locale": {
+            "direction": "ltr",
+            "format": "YYYY-MM-DD HH:mm",
+            "separator": " - ",
+            "applyLabel": "Apply",
+            "cancelLabel": "Cancel",
+            "fromLabel": "From",
+            "toLabel": "To",
+            "customRangeLabel": "Custom",
+            "daysOfWeek": [
+                "Su",
+                "Mo",
+                "Tu",
+                "We",
+                "Th",
+                "Fr",
+                "Sa"
+            ],
+            "monthNames": [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ],
+            "firstDay": 1
+        },
+        "opens": "center",
+        "drops": "up"
+    	});
+
+
+
+</script>
+</th:block>
+
+
+
+</body>
+<th:block th:insert="layout/layout :: f-footer"> footer </th:block>
+</html>

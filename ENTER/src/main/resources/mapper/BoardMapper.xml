@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ENTER.subscription.repository.BoardMapper">
+
+	<!-- 페이징 쿼리 시작 -->
+	<sql id="pageStr">
+		SELECT T.* FROM (
+	</sql>
+	<!-- 페이징 쿼리 종료 -->
+	<sql id="pageEnd">
+		) T WHERE T.RNUM BETWEEN #{startIdx} AND #{endIdx}
+	</sql>
+	<!-- 의뢰하기 검색조건 -->
+	<sql id="myPageSrch">
+		<where>
+			AND TM.DEL_YN = 'N'
+			<if test='memId != null and memId != ""'>
+				AND TM.MEM_ID LIKE '%' || #{memId} || '%'
+			</if>
+			<if test='memNm != null and memNm != ""'>
+				AND TM.MEM_NM LIKE '%' || #{memNm} || '%'
+			</if>
+			<if test='phoneNo != null and phoneNo != ""'>
+				AND TM.PTBL_TEL_NO LIKE '%' || #{phoneNo} || '%'
+			</if>
+			<if test='srchDt != null and srchDt != ""'>
+				AND TM.BGN_REG_DT > TO_DATE(#{srchDt} || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+			</if>
+		</where>
+	</sql>
+
+
+
+	<insert id="insertJoin" parameterType="account">
+		INSERT INTO TB_BRD(
+		BRD_NO
+		, CRETR
+		, BRD_DESC
+		, NICK_NM
+		, KAKAO_NM
+		, GAME_TYPE
+		)
+		VALUES(
+		#{brd_no}
+		,#{nickname}
+		,#{brddesc}
+		,#{nickname}
+		,#{kakaoname}
+		,#{gametype}
+		)
+	</insert>
+
+	<select id="selectJoinList" parameterType="BoardList" resultType="BoardList">
+<!-- 	select brd_no
+			,TO_CHAR(cret_dt, 'YYYY-MM-DD HH24:MI') AS cret_dt
+			, cretr
+			, nick_nm
+			, kakao_nm
+			, game_type
+			, brd_desc
+		from tb_brd where del_yn = 'N' order by brd_no desc;
+		 -->
+<!-- 	select  ROW_NUMBER() OVER(ORDER BY b.brd_no DESC) AS RNUM
+			, b.brd_no
+			, TO_CHAR(b.cret_dt, 'YYYY-MM-DD HH24:MI') AS cret_dt
+			, b.cretr as cretr
+			, b.nick_nm as nick_nm
+			, b.kakao_nm as kakao_nm
+			, b.game_type as game_type
+			, b.brd_desc as brd_desc
+			, f.file_nm as file_nm
+			, f.sys_file_nm_1 as sys_file_nm_1
+			, f.sys_file_nm_2 as sys_file_nm_2
+			, f.sys_file_nm_3 as sys_file_nm_3
+		from tb_brd as b inner join tb_file as f on b.brd_no = f.ref_no where b.del_yn = 'N' order by b.brd_no desc; -->
+
+			select  ROW_NUMBER() OVER(ORDER BY b.brd_no DESC) AS RNUM
+			, b.brd_no
+			, TO_CHAR(b.cret_dt, 'YYYY-MM-DD HH24:MI') AS cret_dt
+			, b.cretr as cretr
+			, b.nick_nm as nick_nm
+			, b.kakao_nm as kakao_nm
+			, b.game_type as game_type
+			, b.brd_desc as brd_desc
+			, f.file_nm as file_nm
+			, f.sys_file_nm_1 as sys_file_nm_1
+			, f.sys_file_nm_2 as sys_file_nm_2
+			, f.sys_file_nm_3 as sys_file_nm_3
+		from tb_brd as b inner join tb_file as f on b.brd_no = f.ref_no where b.del_yn = 'N' and b.brd_no between 1 and 10 ;
+	</select>
+
+	<select id="brdListTmp" parameterType="findBoard" resultType="BoardList">
+				select  ROW_NUMBER() OVER(ORDER BY b.brd_no DESC) AS RNUM
+			, b.brd_no
+			, TO_CHAR(b.cret_dt, 'YYYY-MM-DD HH24:MI') AS cret_dt
+			, b.cretr as cretr
+			, b.nick_nm as nick_nm
+			, b.kakao_nm as kakao_nm
+			, b.game_type as game_type
+			, b.brd_desc as brd_desc
+			, f.file_nm as file_nm
+			, f.sys_file_nm_1 as sys_file_nm_1
+			, f.sys_file_nm_2 as sys_file_nm_2
+			, f.sys_file_nm_3 as sys_file_nm_3
+		from tb_brd as b inner join tb_file as f on b.brd_no = f.ref_no where b.del_yn = 'N' and b.brd_no between #{startIdx} AND #{endIdx};
+	</select>
+
+
+	<update id="boardDel" parameterType="account">
+		update TB_BRD
+		SET DEL_YN = 'Y'
+		,CHG_DT = NOW() WHERE BRD_NO = #{brd_no} and NICK_NM = #{nickname}
+	</update>
+
+
+	<select id="maxJoinNum" resultType = "Integer">
+		select coalesce((max(brd_no)+1),1)  as brd_no from tb_brd;
+	</select>
+
+
+    <!-- 파일 업로드  -->
+ 	<insert id="createFiles" parameterType="java.util.List">
+		INSERT INTO TB_FILE (
+			  CRETR
+			, FILE_GB
+			, REF_NO
+			, FILE_NM
+			, SYS_FILE_NM
+			, FILE_PATH
+			, FILE_SIZE
+		) VALUES
+		 <foreach collection="list" item="item" separator="," >
+			(
+				  #{item.refNo}
+				, #{item.fileGb}
+				, #{item.refNo}
+				, #{item.fileNm}
+				, #{item.sysFileNm}
+				, #{item.filePath}
+				, #{item.fileSize}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="createFiles_New" parameterType="attach">
+		INSERT INTO TB_FILE (
+			  CRETR
+			, FILE_GB
+			, REF_NO
+			, FILE_NM
+			, SYS_FILE_NM_1
+			, SYS_FILE_NM_2
+			, SYS_FILE_NM_3
+			, FILE_PATH
+			, FILE_SIZE
+		)VALUES(
+				  #{refNo}
+				, #{fileGb}
+				, #{refNo}
+				, #{fileNm}
+				, #{sysFileNm_1}
+				, #{sysFileNm_2}
+				, #{sysFileNm_3}
+				, #{filePath}
+				, #{fileSize}
+		)
+
+	</insert>
+
+
+	<select id="totalCount" resultType="Integer">
+	select count(*) from tb_brd where del_Yn = 'N';
+	</select>
+</mapper>
